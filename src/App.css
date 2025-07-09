@@ -1,0 +1,143 @@
+/* Pixel Art Todo App Styles */
+
+/* Import Google Fonts for pixel-like appearance */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --pixel-orange: #FE7743;
+  --pixel-dark-blue: #273F4F;
+  --pixel-medium-blue: #447D9B;
+  --pixel-light-gray: #D7D7D7;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Pixel button hover effects */
+.pixel-button-hover {
+  transition: all 0.1s ease;
+}
+
+.pixel-button-hover:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.pixel-button-hover:active {
+  transform: translate(0px, 0px);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pixel-light-gray);
+  border: 1px solid var(--pixel-dark-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pixel-medium-blue);
+  border: 1px solid var(--pixel-dark-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pixel-orange);
+}
+
+/* Animated background pattern */
+.pixel-bg-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(71, 125, 155, 0.1) 10px,
+      rgba(71, 125, 155, 0.1) 20px
+    );
+}
+
+/* Retro CRT effect (optional) */
+.crt-effect {
+  position: relative;
+}
+
+.crt-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Pixel perfect scaling */
+.pixel-perfect {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Focus styles */
+button:focus,
+input:focus {
+  outline: 2px solid var(--pixel-orange);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background: var(--pixel-orange);
+  color: white;
+}
+
+/* Animations */
+@keyframes pixel-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pixel-fade-in {
+  animation: pixel-fade-in 0.3s ease-out;
+}
+
+@keyframes pixel-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pixel-pulse {
+  animation: pixel-pulse 2s infinite;
+}

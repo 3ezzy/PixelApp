@@ -1,0 +1,52 @@
+/* Import pixel-perfect font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base layer customizations */
+@layer base {
+  html {
+    font-family: 'Press Start 2P', monospace;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  body {
+    line-height: 1.6;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/* Component layer utilities */
+@layer components {
+  .font-pixel {
+    font-family: 'Press Start 2P', monospace;
+  }
+  
+  .pixel-border {
+    border-style: solid;
+    border-width: 2px;
+    image-rendering: pixelated;
+  }
+  
+  .pixel-shadow {
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .pixel-shadow-inset {
+    box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Utility layer helpers */
+@layer utilities {
+  .image-pixel {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
