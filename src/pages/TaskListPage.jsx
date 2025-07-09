@@ -4,11 +4,13 @@ import { useTask } from '../context/TaskContext'
 import NotebookPage from '../components/NotebookPage'
 import TaskItem from '../components/TaskItem'
 import PixelButton from '../components/PixelButton'
+import PixelConfirmModal from '../components/PixelConfirmModal'
 
 const TaskListPage = () => {
   const navigate = useNavigate()
   const { getTodaysTasks, getCompletionProgress, clearTodaysTasks } = useTask()
   const [showCongrats, setShowCongrats] = useState(false)
+  const [showFinishModal, setShowFinishModal] = useState(false)
   
   const todaysTasks = getTodaysTasks()
   const progress = getCompletionProgress()
@@ -22,14 +24,17 @@ const TaskListPage = () => {
         navigate('/dashboard')
       }, 3000)
     } else {
-      // Show confirmation dialog for incomplete tasks
-      const confirmFinish = window.confirm(
-        'You still have uncompleted tasks. Are you sure you want to finish the day?'
-      )
-      if (confirmFinish) {
-        navigate('/dashboard')
-      }
+      setShowFinishModal(true)
     }
+  }
+  
+  const handleConfirmFinish = () => {
+    setShowFinishModal(false)
+    navigate('/dashboard')
+  }
+  
+  const handleCancelFinish = () => {
+    setShowFinishModal(false)
   }
   
   if (showCongrats) {
@@ -204,6 +209,17 @@ const TaskListPage = () => {
             </PixelButton>
           </div>
         </div>
+        
+        {/* Finish day confirmation modal */}
+        <PixelConfirmModal
+          isOpen={showFinishModal}
+          onConfirm={handleConfirmFinish}
+          onCancel={handleCancelFinish}
+          title="FINISH DAY"
+          message={`You still have ${todaysTasks.filter(t => !t.completed).length} uncompleted tasks. Are you sure you want to finish the day?`}
+          confirmText="FINISH"
+          cancelText="CONTINUE"
+        />
       </div>
     </div>
   )
