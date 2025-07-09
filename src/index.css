@@ -40,6 +40,21 @@
   .pixel-shadow-inset {
     box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
   }
+  
+  .pixel-fade-in {
+    animation: pixelFadeIn 0.3s ease-out;
+  }
+  
+  @keyframes pixelFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
 }
 
 /* Utility layer helpers */
